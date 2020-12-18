@@ -1,0 +1,44 @@
+<div class="tableWrapper">
+<table class="table">
+    <thead>
+        <th>name</th>
+        <th>email adress</th>
+        <th>phone number</th>
+        <th colspan="2"></th>
+        
+    </thead>
+    <tr *ngFor="let data of userData; index as i;" [ngClass]="{'highlight': selectedRowIndex == data.id}"
+    (click)="highlight(data)">
+        <td data-name="name">
+            <span *ngIf="!data.editable">{{data.name}}</span>
+            <input type="text" class="form-control" [(ngModel)]="data.name" *ngIf="data.editable"/>
+        </td>
+        <td data-name="email">
+            <span *ngIf="!data.editable">{{data.email}}</span>
+            <input type="text" class="form-control" [(ngModel)]="data.email" *ngIf="data.editable"/>
+        </td>
+        <td data-name="phoneNumber" class="number">
+            <span *ngIf="!data.editable">{{data.phoneNumber}}</span>
+            <input type="text" class="form-control" [(ngModel)]="data.phoneNumber" *ngIf="data.editable"/>
+        </td>
+        <td class="buttons">
+            <button (click)="showDetails(data.id)">view</button>
+            <button *ngIf="enableEdit && enableEditIndex == i" class="cancelBtn" (click)="toggleEditMethod($event, i, data)">Cancel</button>
+            <button *ngIf="enableEdit && enableEditIndex == i" class="saveBtn" id="saveBtn" (click)="saveSegment(data)" type="submit">Save</button>
+            <button *ngIf="!enableEdit" (click)="toggleEditMethod($event, i, data)">
+              edit
+            </button>
+            <button (click)="deleteMethod(data)">delete</button>
+        </td>
+    </tr>
+</table>
+</div>
+<div *ngIf="selected" class="selectedWrapper">
+<div class="selected">
+    <h3>details</h3>
+    <span (click)="showDetails(selectedData.id)">&times;</span>
+    <p>name: {{selectedData.name}}</p>
+    <p>email: {{selectedData.email}}</p>
+    <p>phone number: {{selectedData.phoneNumber}}</p>
+</div>
+</div>

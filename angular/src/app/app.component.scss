@@ -1,0 +1,35 @@
+body {
+    margin:0;
+    padding:0;
+    background:#f0f5fa;
+}
+.app-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height:97vh;
+    background:#f0f5fa;
+    .nav{
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width:47.5%;
+        .navLink{
+            display:block;
+            padding:.5em 1em .5em 1em;
+            border-radius: 10px;
+            background: #e4eafc;
+            margin:1rem;
+            color:#678DFF;
+        }
+    }
+  
+}
+*{
+    font-family: sans-serif;
+}
+a, a:active, a:hover{
+    text-decoration: none;
+    color:inherit;
+}
